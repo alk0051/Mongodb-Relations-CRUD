@@ -1,0 +1,347 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "7.0.0-rc.6",
+    "title": "Customer API",
+    "description": "Customer API Information",
+    "contact": {
+      "name": "Alan Bertani"
+    }
+  },
+  "servers": ["http://localhost:4444"],
+  "paths": {
+    "/customers": {
+      "post": {
+        "description": "Create a new Customer",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/customers/Customer"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/customers/CustomerCreatedResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      },
+      "get": {
+        "description": "List all Customers",
+        "responses": {
+          "200" : {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/customers/Customer"
+                }
+              }
+            }
+          }
+        }
+      } 
+    },
+    "/customers/{_id}": {
+      "put": {
+        "description": "Update Customer",
+        "parametes": [],
+        "responses": {
+          "200" : {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/customers/Customer"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "description": "Delete Customer",
+        "responses": {
+          "200" : {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/customers/Customer"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/addresses": {
+      "post": {
+        "description": "Create a new Address",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/addresses/Address"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/addresses/AddressCreatedResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      },
+      "get": {
+        "description": "List all Addresses",
+        "responses": {
+          "200" : {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/addresses/Address"
+                }
+              }
+            }
+          }
+        }
+      } 
+    },
+    "/addresses/{_id}": {
+      "put": {
+        "description": "Update Address",
+        "parametes": [],
+        "responses": {
+          "200" : {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/addresses/Address"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "description": "Delete Address",
+        "responses": {
+          "200" : {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/addresses/Address"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    
+  },
+  "components": {
+    "schemas": {
+      "customers": {
+        "cnpj": {
+          "type": "string",
+          "example": "99999999999999"
+        },
+        "razaoSocial": {
+          "type": "string",
+          "example": "Bertani"
+        },
+        "nome": {
+          "type": "string",
+          "example": "Alan Bertani"
+        },
+        "telefone": {
+          "type": "number",
+          "example": 43999870019
+        },
+        "addresses": {
+          "type": "array",
+          "example": ""
+        },
+        "Customer": {
+          "type": "object",
+          "properties": {
+            "cnpj": {
+              "$ref": "#/components/schemas/customers/cnpj"
+            },
+            "razaoSocial": {
+              "$ref": "#/components/schemas/customers/razaoSocial"
+            },
+            "nome": {
+              "$ref": "#/components/schemas/customers/nome"
+            },
+            "telefone": {
+              "$ref": "#/components/schemas/customers/telefone"
+            },
+            "addresses": {
+              "$ref": "#/components/schemas/customers/addresses"
+            }
+          }
+        },
+        "CustomerCreatedResponse": {
+          "type": "object",
+          "properties": {
+            "customer": {
+              "type": "object",
+              "properties": {
+                "cnpj": {
+                  "$ref": "#/components/schemas/customers/cnpj"
+                },
+                "razaoSocial": {
+                  "$ref": "#/components/schemas/customers/razaoSocial"
+                },
+                "nome": {
+                  "$ref": "#/components/schemas/customers/nome"
+                },
+                "telefone": {
+                  "$ref": "#/components/schemas/customers/telefone"
+                },
+                "addresses": {
+                  "$ref": "#/components/schemas/customers/addresses"
+                }
+              }
+            }
+          }
+        }
+      },
+      "addresses": {
+        "logradouro": {
+          "type": "string",
+          "example": "99999999999999"
+        },
+        "complemento": {
+          "type": "string",
+          "example": "99999999999999"
+        },
+        "bairro": {
+          "type": "string",
+          "example": "99999999999999"
+        },
+        "cidade": {
+          "type": "string",
+          "example": "99999999999999"
+        },
+        "estado": {
+          "type": "string",
+          "example": "99999999999999"
+        },
+        "cep": {
+          "type": "number",
+          "example": "88888888"
+        },
+        "assignedTo": {
+          "type": "string",
+          "example": "60935a497921a04054e32ca0"
+        },
+        "latitude": {
+          "type": "number",
+          "example": "37.423021"
+        },
+        "longitude": {
+          "type": "number",
+          "example": "-122.083739"
+        },
+        "Address": {
+          "type": "object",
+          "properties": {
+            "logradouro": {
+              "$ref": "#/components/schemas/addresses/logradouro"
+            },
+            "complemento": {
+              "$ref": "#/components/schemas/addresses/complemento"
+            },
+            "bairro": {
+              "$ref": "#/components/schemas/addresses/bairro"
+            },
+            "cidade": {
+              "$ref": "#/components/schemas/addresses/cidade"
+            },
+            "estado": {
+              "$ref": "#/components/schemas/addresses/estado"
+            },
+            "cep": {
+              "$ref": "#/components/schemas/addresses/cep"
+            },
+            "latitude": {
+              "$ref": "#/components/schemas/addresses/latitude"
+            },
+            "longitude": {
+              "$ref": "#/components/schemas/addresses/longitude"
+            }
+          }
+        },
+        "AddressCreatedResponse": {
+          "type": "object",
+          "properties": {
+            "address": {
+              "type": "object",
+              "properties": {
+                "logradouro": {
+                  "$ref": "#/components/schemas/addresses/logradouro"
+                },
+                "complemento": {
+                  "$ref": "#/components/schemas/addresses/complemento"
+                },
+                "bairro": {
+                  "$ref": "#/components/schemas/addresses/bairro"
+                },
+                "cidade": {
+                  "$ref": "#/components/schemas/addresses/cidade"
+                },
+                "estado": {
+                  "$ref": "#/components/schemas/addresses/estado"
+                },
+                "cep": {
+                  "$ref": "#/components/schemas/addresses/cep"
+                },
+                "assignedTo": {
+                  "$ref": "#/components/schemas/addresses/assignedTo"
+                },
+                "latitude": {
+                  "$ref": "#/components/schemas/addresses/latitude"
+                },
+                "longitude": {
+                  "$ref": "#/components/schemas/addresses/longitude"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
